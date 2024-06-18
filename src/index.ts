@@ -4,11 +4,13 @@ import typeDefs from "./schema";
 import resolvers from "./resolvers";
 import UsersAPI from "./data/UsersAPI";
 import TokenAPI from "./data/TokenAPI";
+import SpotifyTokenAPI from "./data/SpotifyTokenAPI";
 
 interface ContextValue {
   dataSources: {
     usersAPI: UsersAPI;
     tokenAPI: TokenAPI;
+    spotifyTokenAPI: SpotifyTokenAPI;
   };
 }
 
@@ -23,10 +25,12 @@ const server = new ApolloServer<ContextValue>({
       context: async () => {
         const usersAPI = new UsersAPI();
         const tokenAPI = new TokenAPI();
+        const spotifyTokenAPI = new SpotifyTokenAPI();
         return {
           dataSources: {
             usersAPI,
-            tokenAPI
+            tokenAPI,
+            spotifyTokenAPI,
           },
         };
       },

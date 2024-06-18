@@ -6,7 +6,6 @@ class TokenAPI extends RESTDataSource {
   async getToken(code: string) {
     const body = { code };
     const options: RequestOptions = {
-      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },

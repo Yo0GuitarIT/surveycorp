@@ -1,5 +1,6 @@
 import UsersAPI from "./data/UsersAPI";
 import TokenAPI from "./data/TokenAPI";
+import SpotifyTokenAPI from "./data/SpotifyTokenAPI";
 
 const resolvers = {
   Query: {
@@ -19,6 +20,13 @@ const resolvers = {
       { dataSources }: { dataSources: { tokenAPI: TokenAPI } }
     ) => {
       return dataSources.tokenAPI.getToken(code);
+    },
+    getSpotifyToken: async (
+      _: any,
+      __: any,
+      { dataSources }: { dataSources: { spotifyTokenAPI: SpotifyTokenAPI } }
+    ) => {
+      return dataSources.spotifyTokenAPI.getSpotifyToken();
     },
   },
 };
