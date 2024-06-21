@@ -1,6 +1,7 @@
 import UsersAPI from "./data/UsersAPI";
 import TokenAPI from "./data/TokenAPI";
 import SpotifyTokenAPI from "./data/SpotifyTokenAPI";
+import { setCode } from "./data/codeStorage";
 
 const resolvers = {
   Query: {
@@ -27,6 +28,12 @@ const resolvers = {
       { dataSources }: { dataSources: { spotifyTokenAPI: SpotifyTokenAPI } }
     ) => {
       return dataSources.spotifyTokenAPI.getSpotifyToken();
+    },
+
+    sendCode: async (_: any, { code }: any) => {
+      console.log(code);
+      setCode(code);
+      return { success: `get ${code}` };
     },
   },
 };

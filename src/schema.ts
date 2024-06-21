@@ -11,7 +11,12 @@ const typeDefs = `#graphql
     type Mutation {
         getToken(code: String!) : TokenResponse
         getSpotifyToken: SpotifyTokenResponse 
+        sendCode(code: String!): Response!
     }
+
+    type Response {
+    success: String!
+  }
 
     type TokenResponse{
         access_token: String
